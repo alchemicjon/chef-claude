@@ -1,21 +1,22 @@
+import { useState } from "react"
+
 export default function Content() {
-  const ingredients = ["Chicken", "Oregano", "Tomatoes"]
+  let [ingredients, setIngredients] = useState([])
+
+  console.log(ingredients)
 
   const ingredientsListItems = ingredients.map(ingredient => (
     <li key={ingredient}>{ingredient}</li>
   ))
 
-  function handleSubmit(event) {
-    event.preventDefault()
-    const formData = new FormData(event.currentTarget)
+  function addIngredient(formData) {
     const newIngredient = formData.get("ingredient")
-    ingredients.push(newIngredient)
-    console.log(ingredients)
+    setIngredients(ingredients => [...ingredients, newIngredient])
   }
 
   return (
     <main>
-      <form onSubmit={handleSubmit} className="add-ingredient-form">
+      <form action={addIngredient} className="add-ingredient-form">
         <input
           type="text"
           placeholder="e.g. oregano"
@@ -29,4 +30,4 @@ export default function Content() {
       </ul>
     </main>
   )
-}
+  }
