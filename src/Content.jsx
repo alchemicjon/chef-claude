@@ -3,8 +3,6 @@ import { useState } from "react"
 export default function Content() {
   let [ingredients, setIngredients] = useState([])
 
-  console.log(ingredients)
-
   const ingredientsListItems = ingredients.map(ingredient => (
     <li key={ingredient}>{ingredient}</li>
   ))

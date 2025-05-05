@@ -1,11 +1,12 @@
 export default function Form() {
   function signUp(formData) {
-    console.log("Submitted")
-    const email = formData.get("email")
-    const password = formData.get("password")
-    const employmentStatus = formData.get("employmentStatus")
-    const dietaryRestrictions = formData.getAll("dietaryRestrictions")
-    console.log(email, password, employmentStatus, dietaryRestrictions)
+    const data = Object.fromEntries(formData);
+    const dietaryRestrictions = formData.getAll('dietaryRestrictions');
+    const allData = {
+      ...data,
+      dietaryRestrictions
+    }
+    console.log(allData)
   }
 
   return (
@@ -51,6 +52,14 @@ export default function Form() {
             Gluten free
           </label>
         </fieldset>
+
+        <label htmlFor="favColor">What is your favorite color?</label>
+        <select id="favColor" name="favColor" defaultValue="blue" required>
+          <option value="" disabled>Choose a color</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+        </select>
 
         <button>Submit</button>
       </form>
