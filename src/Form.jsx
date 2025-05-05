@@ -4,7 +4,8 @@ export default function Form() {
     const email = formData.get("email")
     const password = formData.get("password")
     const employmentStatus = formData.get("employmentStatus")
-    console.log(email, password, employmentStatus)
+    const dietaryRestrictions = formData.getAll("dietaryRestrictions")
+    console.log(email, password, employmentStatus, dietaryRestrictions)
   }
 
   return (
@@ -38,16 +39,16 @@ export default function Form() {
         <fieldset>
           <legend>Dietary Rescriptions</legend>
           <label>
-            <input type="checkbox" name="employmentStatus" value="unemployed" />
-            Unemployed
+            <input type="checkbox" name="dietaryRestrictions" value="kosher" />
+            Kosher
           </label>
           <label>
-            <input type="checkbox" name="employmentStatus" value="partTime" />
-            Part time
+            <input type="checkbox" name="dietaryRestrictions" value="vegan" />
+            Vegan
           </label>
           <label>
-            <input type="checkbox" name="employmentStatus" value="fullTime" defaultChecked={true} />
-            Full time
+            <input type="checkbox" name="dietaryRestrictions" value="gluten-free" defaultChecked={true} />
+            Gluten free
           </label>
         </fieldset>
 
